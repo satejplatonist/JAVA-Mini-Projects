@@ -15,7 +15,7 @@ public enum BurgerToppings
 	  this.temp=temp;
    }
    
-   protected static BurgerToppings getDrinkType()
+   protected static BurgerToppings getToppingType()
    {
 	   System.out.println("Enter the toppings to add :");
 	   String value = "cheese";
