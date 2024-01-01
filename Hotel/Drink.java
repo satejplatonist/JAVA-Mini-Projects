@@ -3,7 +3,7 @@ package java_project_2;
 
 public class Drink extends DrinkPrice
 {
-   DrinkPrice totalPriceDrink;
+   private DrinkPrice totalPriceDrink;
    public Drink()
    {
 	   totalPriceDrink = new DrinkPrice();
@@ -20,7 +20,7 @@ public class Drink extends DrinkPrice
 	   return totalPriceDrink.getPriceOfDrink();
    }
    
-   public void listOfDrinks()
+   public static void listOfDrinks()
    {
 	   System.out.println("List of drinks :");
 	   for(DrinkType drinks:DrinkType.values())
@@ -29,7 +29,7 @@ public class Drink extends DrinkPrice
 	   }
    }
    
-   public void listofDrinksWithPrice()
+   public static void listofDrinksWithPrice()
    {
 	   System.out.println("List of drinks with price:");
 	   for(DrinkType drinks:DrinkType.values())
