@@ -27,7 +27,7 @@ public enum BurgerSize
    	catch(NullPointerException e)
    	{
    		@SuppressWarnings("resource")
-			Scanner scannerObj = new Scanner(System.in);
+		Scanner scannerObj = new Scanner(System.in);
    		key = scannerObj.nextInt();
    		if(key==1) {return BurgerSize.SMALL;}
    		else if(key==2) {return BurgerSize.MEDIUM;}
