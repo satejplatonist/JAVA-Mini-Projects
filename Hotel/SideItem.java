@@ -25,7 +25,15 @@ public class SideItem extends SideItemPrice
 	   return (sideDishType.name());
    }
    
-   public void printSideItemList()
+   public static void printSideItemList()
+   {
+	   for(SideDishType side_item : SideDishType.values())
+	   {
+		   System.out.println(side_item);
+	   }
+   }
+   
+   public static void printSideItemListPrice()
    {
 	   for(SideDishType side_item : SideDishType.values())
 	   {
@@ -75,7 +83,7 @@ class SideItemPrice
     	return sideItemPrice;
     }
 	
-	protected int getEachItemPrice(SideDishType sideDishType1)
+	protected static int getEachItemPrice(SideDishType sideDishType1)
 	{
 		return switch(sideDishType1)
 		{
