@@ -15,7 +15,7 @@ public enum BurgerToppings
 	  this.temp=temp;
    }
    
-   protected static BurgerToppings getToppingType()
+   protected static BurgerToppings getToppingsType()
    {
 	   System.out.println("Enter the toppings to add :");
 	   String value = "cheese";
@@ -66,7 +66,7 @@ public enum BurgerToppings
 			   {
 				   System.out.println("enter topping name : {[ ** only 3 are allowed ]}");
 				   value=System.console().readLine();
-				   BurgerToppings tempBurgerTopping = BurgerToppings.valueOf(value);
+				   BurgerToppings tempBurgerTopping = get_BT(value);
 				   listOfToppings.add(tempBurgerTopping);
 				   System.out.println("enter your choice : ");
 				   choice=System.console().readLine().charAt(0);
@@ -88,7 +88,7 @@ public enum BurgerToppings
 			   {
 				   System.out.println("enter topping name : {[ ** only 3 are allowed ]}");
 				   value=scanObj.nextLine();
-				   BurgerToppings tempBurgerTopping = BurgerToppings.valueOf(value);
+				   BurgerToppings tempBurgerTopping = get_BT(value);
 				   listOfToppings.add(tempBurgerTopping);
 				   System.out.println("enter your choice : ");
 				   choice=scanObj.nextLine().charAt(0);
@@ -98,6 +98,18 @@ public enum BurgerToppings
 		   
 		   var BurgerToppingArray = listOfToppings.toArray(new BurgerToppings[listOfToppings.size()]);
 		   return BurgerToppingArray;
+	   }
+   }
+   
+   private static BurgerToppings get_BT(String value)
+   {
+	   switch(value)
+	   {
+	   case "cheese": return CHEESE;
+	   case "tomato onions":return TOMATO_ONIONS;
+	   case "ketchup":return KETCHUP;
+	   default:
+		   return CHEESE;
 	   }
    }
 }
