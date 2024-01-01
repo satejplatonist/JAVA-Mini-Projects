@@ -40,6 +40,7 @@ public enum SideDishType
 	   }
 	   catch(NullPointerException e)
 	   {
+		   @SuppressWarnings("resource")
 		   Scanner scannerObj = new Scanner(System.in);
 		   value = scannerObj.nextLine();
 		   value.toLowerCase();
