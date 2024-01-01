@@ -1,5 +1,6 @@
 package java_project_2;
 import java.util.Scanner;
+
 import java.lang.NullPointerException;
 import java.util.Map.Entry;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ public enum BurgerType
    BEAN_BURGER("BEAN BURGER"),
    CHEESE_BURGER("CHEESE BURGER"),
    BEYOND_MEAT("BEYOND MEAT");
+   
+   
 	
    final String type_value;	
    
@@ -22,7 +25,7 @@ public enum BurgerType
 	   type_value=type;
    }
    
-   protected HashMap<BurgerType,Integer> baseBurgerMap()
+   public static HashMap<BurgerType,Integer> baseBurgerMap()
    {
 	   HashMap<BurgerType,Integer> Burger_type_Price_Imfo = new HashMap<>();
 	   Burger_type_Price_Imfo.put(TURKEY_BURGER,150);
@@ -36,7 +39,7 @@ public enum BurgerType
 	   return Burger_type_Price_Imfo;
    }
    
-   protected Object[] burgerTypePriceReturner()
+   public static Object[] burgerTypePriceReturner()
    {
 	   HashMap<BurgerType,Integer> Burger_type_Price_Imfo = baseBurgerMap();
 	   PairTemplate<BurgerType,Integer> pair = new PairTemplate<>();
@@ -45,14 +48,13 @@ public enum BurgerType
 	   try
 	   {
 		  value=System.console().readLine();
-		  BurgerType tempBurgerType = BurgerType.valueOf(value);
 		  for(Entry<BurgerType,Integer> entry : Burger_type_Price_Imfo.entrySet())
 		  {
-			  if(entry.getKey()== tempBurgerType)
-			  {
-				  pair.put(tempBurgerType,entry.getValue());
-				  return pair.get();
-			  }
+			  if((BurgerType)entry.getKey()== getType(value))
+			   {
+				   pair.put(getType(value),entry.getValue());
+				   return pair.get();
+			   }
 		  }
 		 
 	   }
@@ -61,12 +63,11 @@ public enum BurgerType
 		   @SuppressWarnings("resource")
 		   Scanner scanObj = new Scanner(System.in);
 		   value = scanObj.nextLine();
-		   BurgerType tempBurgerType = BurgerType.valueOf(value);
 		   for(Entry<BurgerType,Integer> entry : Burger_type_Price_Imfo.entrySet())
 		   {
-			   if(entry.getKey()== tempBurgerType)
+			   if((BurgerType)entry.getKey()== getType(value))
 			   {
-				   pair.put(tempBurgerType,entry.getValue());
+				   pair.put(getType(value),entry.getValue());
 				   return pair.get();
 			   }
 		   }
@@ -74,5 +75,22 @@ public enum BurgerType
 	   
 	   Object[] array = {BurgerType.CHEESE_BURGER,225};
 	   return array;
+   }
+   
+   private static BurgerType getType(String value)
+   {
+	   return switch (value.toUpperCase()) 
+	   {
+	     case "TURKEY BURGER":{yield TURKEY_BURGER;} 
+	     case "POTROBELLO MUSHROOM":{yield  POTROBELLO_MUSHROOM;}
+	     case "ELK BURGER":{yield ELK_BURGER;}
+	     case "VEGIE BURGER":{yield VEGIE_BURGER;}
+	     case "MID SALMON":{yield MID_SALMON;}
+	     case "BEAN BURGER":{yield BEAN_BURGER;}
+	     case "CHEESE BURGER":{yield CHEESE_BURGER;}
+	     case "BEYOND MEAT":{yield BEYOND_MEAT;}	     
+	     default:
+		    throw new IllegalArgumentException("Unexpected value: " + value);
+	   };
    }
 }
