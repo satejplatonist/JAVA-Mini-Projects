@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.NullPointerException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
 public class Login 
@@ -76,6 +78,18 @@ public class Login
 				}
 			}
 			return false;
+		}
+	}
+	
+	public void logOut()
+	{
+		try(BufferedWriter tempBuffer = new BufferedWriter(new FileWriter("currentLogin.txt")))
+		{
+			tempBuffer.write(" ");
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
 		}
 	}
 	
