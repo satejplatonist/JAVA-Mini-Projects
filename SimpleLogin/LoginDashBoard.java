@@ -1,4 +1,6 @@
 package Login;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.NullPointerException;
 import java.util.Scanner;
@@ -69,6 +71,20 @@ public class LoginDashBoard
     			}
     		    break;	
     		case 3:
+    			Login instance = Login.getLogin();
+    			try (BufferedReader buff = new BufferedReader(new FileReader("currentLogin.txt"))) 
+    			{
+    				if(buff.readLine().equals(" "))
+					{
+						instance.logOut();
+					}
+				} 
+    			catch (IOException e) 
+    			{
+					System.out.println(e.getMessage());
+				}
+    				
+    		case 4:
     			AccountDeletion delete = AccountDeletion.getACDeletionInstance();
     			delete.delete();
     		default:
