@@ -1,6 +1,8 @@
 package Login;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.NullPointerException;
 import java.util.Scanner;
@@ -66,12 +68,19 @@ public class Login
 				array = temp.split(" ",5);
 				if(array[0].equals(UserNameEncryption()) && array[1].equals(PasswordEncryption()))
 				{
-					return true;
+					try(BufferedWriter curr_buff_reader = new BufferedWriter(new FileWriter("currentLogin.txt")))
+					{
+						curr_buff_reader.write(temp);
+						return true;
+					}
 				}
 			}
 			return false;
 		}
 	}
+	
+	public String getEncryptedPassword() {return PasswordEncryption();}
+	public String getEncryptedUserName() {return UserNameEncryption();}
 	
 	private String PasswordEncryption()
     {
