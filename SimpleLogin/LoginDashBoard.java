@@ -68,7 +68,9 @@ public class LoginDashBoard
     				}
     			}
     		    break;	
-    		    
+    		case 3:
+    			AccountDeletion delete = AccountDeletion.getACDeletionInstance();
+    			delete.delete();
     		default:
     			Login __instance2__ = Login.getLogin();
     			for(int i=0;i<3;i++)
@@ -116,6 +118,7 @@ public class LoginDashBoard
     private static void printBoard()
     {
     	System.out.println("Enter 1 if you are new Please REGISTER YOURSELF ......");
-    	System.out.println("Enter 2 if you have registered Please LOGIN ....");
+    	System.out.println("Enter 2 if you have registered Please LOGIN ..........");
+    	System.out.println("Enter 3 if you want to delete your acccount ..........");
     }
 }
